@@ -73,7 +73,7 @@ export default function HomePage(props) {
     )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const client = await MongoClient.connect(process.env.NEXT_PUBLIC_MONGO_URI)
     const db = client.db()
 
@@ -90,7 +90,6 @@ export async function getStaticProps() {
                 image: meetup.image,
                 id: meetup._id.toString()
             }))
-        },
-        revalidate: 2
+        }
     }
 }
