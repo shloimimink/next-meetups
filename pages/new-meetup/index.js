@@ -13,9 +13,9 @@ export default function NewMeetupPage() {
                 'Content-Type': 'application/json'
             }
         })
-        const data = await response.json({revalidated: true})
+        const data = await response.json()
         console.log(data)
-        await router.push('/')
+        router.push('/')
     }
 
     return (
