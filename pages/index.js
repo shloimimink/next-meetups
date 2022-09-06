@@ -90,6 +90,7 @@ export async function getStaticProps() {
                 image: meetup.image,
                 id: meetup._id.toString()
             }))
-        }
+        },
+        unstable_revalidate: 3
     }
 }
