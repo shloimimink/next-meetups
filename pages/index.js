@@ -73,35 +73,8 @@ export default function HomePage(props) {
     )
 }
 
-export async function getServerSideProps(context) {
-
-    const client = await MongoClient.connect(process.env.NEXT_PUBLIC_MONGO_URI)
-    const db = client.db()
-
-    const meetupsCollection = db.collection('meetups')
-
-    const meetups = await meetupsCollection.find().toArray()
-    client.close()
-    
-    const req = context.req
-    const res = context.res
-
-    return {
-        props: {
-            meetups: meetups.map((meetup) => ({
-                title: meetup.title,
-                address: meetup.address,
-                image: meetup.image,
-                id: meetup._id.toString()
-            }))
-        }
-    }
-}
-
-
-/*
 export async function getStaticProps() {
-    const client = await MongoClient.connect(process.env.NEXT_PUBLIC_MONGO_URI)
+    const client = await MongoClient.connect('mongodb+srv://shloimi1215:shloimi1215@cluster0.p5vuhhc.mongodb.net/meetups-app?retryWrites=true&w=majority')
     const db = client.db()
 
     const meetupsCollection = db.collection('meetups')
@@ -120,4 +93,4 @@ export async function getStaticProps() {
         },
         revalidate: 1
     }
-}*/
+}
