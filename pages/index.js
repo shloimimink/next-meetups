@@ -73,7 +73,7 @@ export default function HomePage(props) {
     )
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const client = await MongoClient.connect(process.env.NEXT_PUBLIC_MONGO_URI)
     const db = client.db()
 
@@ -91,5 +91,6 @@ export async function getServerSideProps() {
                 id: meetup._id.toString()
             }))
         },
+        revalidate: 1
     }
 }
