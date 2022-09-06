@@ -91,6 +91,6 @@ export async function getStaticProps() {
                 id: meetup._id.toString()
             }))
         },
-        unstable_revalidate: 3
+        revalidate: 2
     }
 }
