@@ -1,4 +1,4 @@
-import {MongoClient} from 'mongodb'
+import {MongoClient, ObjectId} from 'mongodb'
 
 async function handler(req, res) {
     if (req.method === 'POST') {
@@ -17,6 +17,7 @@ async function handler(req, res) {
 
         res.status(201).json({message: 'Meetup inserted!'})
     }
+
 }
 
 export default handler
